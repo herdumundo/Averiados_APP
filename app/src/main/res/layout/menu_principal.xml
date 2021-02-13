@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.averiados.menu_principal">
+
+    <Button
+        android:id="@+id/btn_informe_menu"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:drawableLeft="@drawable/ic_action_menu_informes"
+        android:onClick="ir_menu_informes"
+        android:text="INFORMES VARIOS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <Button
+        android:id="@+id/btn_desm"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_informe_menu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_action_desm"
+        android:onClick="ir_desmontaje"
+        android:text="REGISTRO DE DESMONTAJE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <Button
+        android:id="@+id/btn_desm2"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_desm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_action_desm"
+        android:onClick="ir_desmontaje_CEN7"
+        android:text="REGISTRO DE DESMONTAJE CEN 007"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <Button
+        android:id="@+id/btn_devo"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_desm2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_action_devo"
+        android:onClick="ir_devolucion"
+        android:text="REGISTRO DEVOLUCIONES"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="81dp" />
+
+    <Button
+        android:id="@+id/btn_tran_dev"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_devo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_action_devo"
+        android:onClick="ir_cambio"
+        android:text="REGISTRO DE CAMBIO DIRECTO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="81dp" />
+
+    <Button
+        android:id="@+id/btn_transf"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_tran_dev"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_action_transf"
+        android:onClick="ir_transferencia"
+        android:text="REGISTRO TRANSFERENCIA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="81dp" />
+
+    <Button
+        android:id="@+id/btn_transformacion"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_transf"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_action_transformacion"
+        android:onClick="ir_transformacion"
+        android:text="TRANSFORMACION "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="81dp" />
+
+    <Button
+        android:id="@+id/btn_sincro"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_transformacion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:drawableLeft="@drawable/ic_action_sincro"
+        android:onClick="sincronizar_clientes"
+        android:text="SINCRONIZAR CLIENTES"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="81dp" />
+</RelativeLayout>

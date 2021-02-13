@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Averiados</string>
+    <string name="footer_text"> </string>
+    <string name="action_settings">Settings</string>
+    <string name="file_view">File View</string>
+    <string name="file_download">File Download</string>
+    <string name="file_request">Request Access Again</string>
+
+</resources>
