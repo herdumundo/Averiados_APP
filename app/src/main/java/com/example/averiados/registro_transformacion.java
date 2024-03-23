@@ -43,6 +43,7 @@ import Entidades.tipo_huevo;
 import Entidades.destino;
 import Entidades.grilla_transformacion_agregar;
 import Entidades.lote;
+import Utilidades.Utilidades;
 import cz.msebera.android.httpclient.Header;
 import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 
@@ -257,7 +258,7 @@ public class registro_transformacion extends AppCompatActivity {
         params.put("txtDeposito",txt_transformacion_deposito.getText().toString().trim());
         params.put("itemcode",cod_tipo_huevo);
 
-        client.post("http://192.168.6.162/ws/stock_averiados.aspx", params, new TextHttpResponseHandler() {
+        client.post("http://"+ Utilidades.IP+"/ws/Test/consulta_stock_averiados.aspx", params, new TextHttpResponseHandler() {
                     @Override
                     public void onStart() {
                         progress = ProgressDialog.show(registro_transformacion.this, "CONSULTANDO DATOS", "ESPERE...", true);
@@ -269,7 +270,6 @@ public class registro_transformacion extends AppCompatActivity {
                         if (statusCode == 200) {
                             try
                             {
-
                                 list_tipo_text.clear();//LIMPIAR LA LISTA ARRAY PARA COMENZAR DE NUEVO
                                 lista_tipo.clear();
                                 JSONObject respuesta_json =new JSONObject(res);
@@ -286,10 +286,6 @@ public class registro_transformacion extends AppCompatActivity {
                                 txt_huevo_transformacion.setText("SELECCIONE TIPO DE HUEVO");
                                 txt_cant_disponible_transformacion.setText("0");
                                 sipinnerDialog_huevo = new SpinnerDialogCustom(registro_transformacion.this,list_tipo_text,"SELECCION DE TIPO DE HUEVO");
-
-
-
-
                             }
                             catch (Exception e)
                             {
@@ -311,7 +307,7 @@ public class registro_transformacion extends AppCompatActivity {
                         progress.dismiss();
                         new AlertDialog.Builder(registro_transformacion.this)
                                 .setTitle("ATENCION!!!")
-                                .setMessage("ERROR DE CONEXION, FAVOR INTENTE DE NUEVO.")
+                                .setMessage("ERROR DE CONEXION, FAVOR INTENTE DE NUEVOs.")
                                 .setNegativeButton("CERRAR", null).show();
                         txt_huevo_transformacion.setVisibility(View.INVISIBLE);
                     }
@@ -345,7 +341,7 @@ public class registro_transformacion extends AppCompatActivity {
 
                         else {
                             RequestQueue queue = Volley.newRequestQueue(registro_transformacion.this);
-                            String url ="http://192.168.6.162/ws/control_transformaciones.aspx";
+                            String url ="http://"+ Utilidades.IP+"/ws/Test/control_transformaciones.aspx";
                             StringRequest strRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>()
                             {
                                 @Override

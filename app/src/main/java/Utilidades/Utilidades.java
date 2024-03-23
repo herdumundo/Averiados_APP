@@ -6,6 +6,7 @@ public class Utilidades {
     public static final String TABLA_CLIENTES="clientes";
     public static final String TABLA_DEPOSITOS="depositos";
     public static final String TABLA_RECUPERADOS="recuperados";
+    public static final String IP="apisap.yemita.com.py";
 
     //////////////////////////////////////////////////////
 

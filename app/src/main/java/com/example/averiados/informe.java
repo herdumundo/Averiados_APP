@@ -40,6 +40,7 @@ import Entidades.informe_array;
 import Entidades.informe_array_global;
 import Entidades.motivo;
 
+import Utilidades.Utilidades;
 import cz.msebera.android.httpclient.Header;
 
 import java.io.File;
@@ -92,7 +93,8 @@ public class informe extends AppCompatActivity {
         if(datos_usuario.tipo_informe.equals("DEVOLUCION")){
 
         }
-        else {
+        else
+            {
             btn_descargar.setVisibility(View.GONE);
         }
         btn_fecha.setOnClickListener(new View.OnClickListener()
@@ -179,7 +181,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
             final TextView txt_fecha_cuadro = (TextView) mView.findViewById(R.id.txt_fecha);
             final Button btn_registrar_cuadro = (Button) mView.findViewById(R.id.btn_registrar_cuadro);
             txt_descripcion.setText(informacion);
-
+            txt_fecha_cuadro.setVisibility(View.GONE);
 
             txt_fecha_cuadro.setOnClickListener(new View.OnClickListener()
             {
@@ -231,15 +233,13 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
                                     .setNegativeButton("CERRAR", null).show();
                         }
 
-                        else if(txt_fecha_cuadro.getText().length()==0){
+                      /*  else if(txt_fecha_cuadro.getText().length()==0){
                             new AlertDialog.Builder(informe.this)
                                     .setTitle("ATENCION!!!")
                                     .setMessage("DEBES INGRESAR LA FECHA DE CONSUMO PREFERENTE")
                                     .setNegativeButton("CERRAR", null).show();
-                        }
+                        }*/
                         else {
-
-
                             progress = ProgressDialog.show(informe.this, "REGISTRANDO",
                                     "ESPERE...", true);
                             SQLiteDatabase db=conn.getWritableDatabase();
@@ -288,8 +288,6 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
                             dialog.dismiss();
                             refrescar_grilla();
                             progress.dismiss();
-
-
                         }
                     }
                     catch (Exception e){
@@ -299,18 +297,9 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
                                 .setTitle("ATENCION!!!")
                                 .setMessage(e.toString())
                                 .setNegativeButton("CERRAR", null).show();
-
                     }
-
                 }
-
             });
-
-
-
-
-
-
         }
     });
 }
@@ -333,7 +322,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
         if(file.exists()){
             file.delete();
         }
-        String url = "http://192.168.6.162:8086/WebServices_reportes/control.jsp?codigo="+codigo;
+        String url = "http://yemsys.yemita.com.py/cruds/webServiceReportes/control.jsp?codigo="+codigo;
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setDescription("Descargando...");
         request.setTitle("Reportes impresion");
@@ -359,15 +348,16 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
 
     private     void cargar_grilla (){
         if(datos_usuario.tipo_informe.equals("CAMBIO")||datos_usuario.tipo_informe.equals("TRANSFERENCIA")){
-            url="http://192.168.6.162/ws/rep_select_cambio.aspx";
+            url="http://"+Utilidades.IP+"/ws/rep_select_cambio.aspx";
             valor_JSON1="docnum";valor_JSON2="slpname"; valor_JSON3="doctime"; valor_JSON4="docentry";
             valor_nombre1="Nro.: ";  valor_nombre2="Repartidor: ";  valor_nombre3="Hora: ";
                     }
         else if(datos_usuario.tipo_informe.equals("STOCK")||datos_usuario.tipo_informe.equals("STOCK_AVERIADOS")){
-            url="http://192.168.6.162/ws/consulta_stock_averiados.aspx";
+            url="http://"+Utilidades.IP+"/ws/consulta_stock_averiados.aspx";
             valor_JSON1="itemcode";valor_JSON2="itemname"; valor_JSON3="onhand";
             valor_nombre1="Codigo.: ";  valor_nombre2="Descripcion: ";  valor_nombre3="Cantidad: ";
                     }
+
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("txtfecha", txt_fecha.getText());
@@ -425,7 +415,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
     private     void cargar_grilla_devoluciones_demontajes (){
 
         if(datos_usuario.tipo_informe.equals("DEVOLUCION")){
-            url="http://192.168.6.162/ws/rep_select_devoluciones.aspx";
+            url="http://"+ Utilidades.IP+"/ws/rep_select_devoluciones.aspx";
               valor_nombre1="Nro interno: "; valor_nombre2="Codigo de producto: ";valor_nombre5="Articulo: ";
               valor_nombre6="Cantidad: "; valor_nombre7="Motivo: "; valor_nombre8="Repartidor: "; valor_nombre9="Cantidad total: ";
 
@@ -433,7 +423,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
               valor_JSON7="motivo";valor_JSON8="repartidor";   valor_JSON9="cantH";
         }
         else if(datos_usuario.tipo_informe.equals("DESMONTAJE")){
-            url="http://192.168.6.162/ws/rep_select_desmontajes.aspx";
+            url="http://"+Utilidades.IP+"/ws/rep_select_desmontajes.aspx";
             valor_nombre1="Nro documento: "; valor_nombre2="Codigo: "; valor_nombre4="Cantidad: ";  valor_nombre5="Tipo de huevo: ";
             valor_nombre6="Unidad: "; valor_nombre7="Deposito: ";
 
@@ -456,11 +446,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
                         if (statusCode == 200) {
                             try {
                                 JSONObject respuesta_json =new JSONObject(res);
-
                                 JSONArray jsonArray_list = respuesta_json.getJSONArray("contenido_grilla");
-
-
-
                                     lista_array_global.clear();
                                 if(datos_usuario.tipo_informe.equals("DEVOLUCION")){
                                     for (int i=0; i<jsonArray_list.length();i++) {
@@ -477,7 +463,6 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
                                         lista_array_global.add(gd);
                                     }
                                 }
-
                                else if(datos_usuario.tipo_informe.equals("DESMONTAJE"))
                                {
                                     for (int i=0; i<jsonArray_list.length();i++) {
@@ -492,10 +477,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
                                        lista_array_global.add(gd);
                                     }
                                 }
-
                                 adaptador_grilla(txt_fecha.getText().toString());
-
-
                             }
                             catch (Exception e){
 
@@ -612,9 +594,6 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
 
 
             }
-
-
-
             return view;
         }
     };
@@ -628,7 +607,7 @@ else if (datos_usuario.tipo_informe.equals("DEVOLUCION")){
         if(file.exists()){
             file.delete();
         }
-        String url = "http://192.168.6.162:8086/WebServices_reportes/control_resumen_recuperados.jsp?fecha="+txt_fecha.getText().toString();
+        String url = "http://yemsys.yemita.com.py/cruds/webServiceReportes/control_resumen_recuperados.jsp?fecha="+txt_fecha.getText().toString();
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setDescription("Descargando...");
         request.setTitle("Reporte de recuperados");

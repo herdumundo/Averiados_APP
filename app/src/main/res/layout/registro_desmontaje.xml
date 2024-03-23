@@ -6,44 +6,28 @@
     android:layout_height="match_parent"
     tools:context="com.example.averiados.registro_desmontaje">
 
-    <Button
-        android:id="@+id/btn_fecha"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="20dp"
-        android:drawableLeft="@drawable/ic_action_search"
-        android:text="Fecha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_fecha_desmontaje" />
 
     <Button
         android:id="@+id/btn_cant_animales"
         android:layout_width="378dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/txt_fecha_desmontaje"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="29dp"
         android:drawableLeft="@drawable/ic_action_save"
         android:onClick="registrar_devolucion"
-        android:text="PROCESAR"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:text="PROCESAR"  />
 
     <TextView
         android:id="@+id/txt_fecha_desmontaje"
         android:layout_width="156dp"
         android:layout_height="51dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="15dp"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -51,11 +35,11 @@
         android:id="@+id/lv_desmontaje"
         android:layout_width="411dp"
         android:layout_height="407dp"
+        android:layout_below="@+id/btn_cant_animales"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="281dp"
+        android:layout_marginTop="109dp"
         android:layout_marginEnd="-3dp" />
 
 

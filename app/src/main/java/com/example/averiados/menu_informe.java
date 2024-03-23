@@ -64,7 +64,8 @@ public class menu_informe extends AppCompatActivity {
     }
 
 
-    public void ir_informe_stock(View view) {
+    public void ir_informe_stock(View view)
+    {
         datos_usuario.tipo_informe="STOCK";
         datos_usuario.titulo_cuadro="INFORME DE STOCK DISPONIBLE";
         datos_usuario.deposito="AVE001";
@@ -72,8 +73,9 @@ public class menu_informe extends AppCompatActivity {
         finish();
         Intent i=new Intent(menu_informe.this, informe.class);
         startActivity(i);
-
     }
+
+
     public void ir_informe_stock_averiados(View view) {
         datos_usuario.tipo_informe="STOCK_AVERIADOS";
         datos_usuario.titulo_cuadro="INFORME DE STOCK DISPONIBLE";
